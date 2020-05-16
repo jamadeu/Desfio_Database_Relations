@@ -1,5 +1,4 @@
 import { getRepository, Repository } from 'typeorm';
-
 import ICustomersRepository from '@modules/customers/repositories/ICustomersRepository';
 import ICreateCustomerDTO from '@modules/customers/dtos/ICreateCustomerDTO';
 import Customer from '../entities/Customer';
@@ -16,15 +15,12 @@ class CustomersRepository implements ICustomersRepository {
       name,
       email,
     });
-
     await this.ormRepository.save(customer);
-
     return customer;
   }
 
   public async findById(id: string): Promise<Customer | undefined> {
     const findCustomer = await this.ormRepository.findOne(id);
-
     return findCustomer;
   }
 
@@ -34,7 +30,6 @@ class CustomersRepository implements ICustomersRepository {
         email,
       },
     });
-
     return findCustomer;
   }
 }

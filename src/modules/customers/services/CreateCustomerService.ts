@@ -16,12 +16,12 @@ class CreateCustomerService {
   ) {}
 
   public async execute({ name, email }: IRequest): Promise<Customer> {
-    let costumer = await this.customersRepository.findByEmail(email);
-    if (costumer) {
+    let customer = await this.customersRepository.findByEmail(email);
+    if (customer) {
       throw new AppError('Email already in use');
     }
-    costumer = await this.customersRepository.create({ name, email });
-    return costumer;
+    customer = await this.customersRepository.create({ name, email });
+    return customer;
   }
 }
 
